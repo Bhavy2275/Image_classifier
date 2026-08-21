@@ -1,0 +1,41 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+
+# ── Core Framework ───────────────────────────────────────────
+fastapi>=0.115.0
+uvicorn[standard]>=0.32.0
+python-multipart>=0.0.12
+
+# ── Settings / Validation ────────────────────────────────────
+pydantic>=2.10.0
+pydantic-settings>=2.6.0
+
+# ── ML / Inference ───────────────────────────────────────────
+torch
+torchvision
+timm
+onnxruntime
+grad-cam
+
+# ── Image Processing ─────────────────────────────────────────
+Pillow
+numpy
+opencv-python-headless
+
+# ── Queue / Cache ────────────────────────────────────────────
+redis
+rq
+
+# ── Supabase ─────────────────────────────────────────────────
+supabase
+PyJWT
+cryptography
+
+# ── Cloudinary ───────────────────────────────────────────────
+cloudinary
+
+# ── HTTP Client ──────────────────────────────────────────────
+httpx
+
+# ── Testing ──────────────────────────────────────────────────
+pytest
+pytest-asyncio

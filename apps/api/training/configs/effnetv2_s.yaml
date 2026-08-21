@@ -1,0 +1,30 @@
+# EfficientNetV2-S Training Configuration
+# ─────────────────────────────────────────────────────────────
+# These values are loaded by training/train.py
+
+# Model
+model_name: efficientnetv2_s
+num_classes: 1000          # Override for custom dataset
+
+# Input
+image_size: 300            # EfficientNetV2-S native resolution
+
+# Training loop
+epochs: 30
+batch_size: 32
+
+# Optimizer (AdamW)
+lr: 3.0e-4
+weight_decay: 1.0e-4
+
+# Staged fine-tuning
+# Unfreeze last N backbone blocks at this epoch
+unfreeze_epoch: 15
+unfreeze_last_n: 3
+
+# Data
+val_split: 0.2
+num_workers: 4
+
+# Output
+output_dir: checkpoints

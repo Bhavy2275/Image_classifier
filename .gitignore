@@ -1,0 +1,77 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+.next/
+out/
+dist/
+build/
+
+# Environment files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+env/
+.env/
+*.egg-info/
+dist/
+build/
+*.pyo
+*.pyc
+
+# ML model artifacts
+*.onnx
+*.pt
+*.pth
+*.pkl
+model_cache/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Turbo cache
+.turbo/
+
+# Testing
+coverage/
+.pytest_cache/
+htmlcov/
+
+# Docker
+*.env.docker
+
+# HuggingFace / model cache
+.cache/
+apps/api/model_cache/
+
+# pnpm
+pnpm-lock.yaml
+
+# Agents dir secrets (keep skills but not mcp secrets)
+.agents/mcp_config.json
