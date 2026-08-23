@@ -11,30 +11,30 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Dark glassmorphism palette
+        // Monochrome palette
         void: {
-          950: "#03020a",
-          900: "#06050f",
-          800: "#0c0b1a",
-          700: "#131124",
+          950: "#000000",
+          900: "#080808",
+          800: "#111111",
+          700: "#1a1a1a",
         },
         brand: {
-          50:  "#f0e6ff",
-          100: "#dcc8ff",
-          200: "#c29eff",
-          300: "#a574ff",
-          400: "#8b4aff",
-          500: "#7c3aed",  // primary purple
-          600: "#6d28d9",
-          700: "#5b21b6",
-          800: "#4c1d95",
-          900: "#3b1573",
+          50:  "#ffffff",
+          100: "#f5f5f5",
+          200: "#e5e5e5",
+          300: "#d4d4d4",
+          400: "#a3a3a3",
+          500: "#ffffff",  // primary: white
+          600: "#e5e5e5",
+          700: "#a3a3a3",
+          800: "#525252",
+          900: "#262626",
         },
         accent: {
-          cyan:  "#22d3ee",
-          pink:  "#f472b6",
-          green: "#34d399",
-          amber: "#fbbf24",
+          cyan:  "#e5e5e5",
+          pink:  "#d4d4d4",
+          green: "#a3a3a3",
+          amber: "#f5f5f5",
         },
       },
       fontFamily: {
@@ -42,9 +42,9 @@ const config: Config = {
         mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
       backgroundImage: {
-        "radial-brand": "radial-gradient(ellipse at top, #7c3aed22 0%, transparent 60%)",
+        "radial-brand": "radial-gradient(ellipse at top, rgba(255,255,255,0.04) 0%, transparent 60%)",
         "mesh-gradient":
-          "linear-gradient(135deg, #06050f 0%, #0c0b1a 50%, #06050f 100%)",
+          "linear-gradient(135deg, #000000 0%, #111111 50%, #000000 100%)",
       },
       animation: {
         "glow-pulse": "glow-pulse 3s ease-in-out infinite",
@@ -54,8 +54,8 @@ const config: Config = {
       },
       keyframes: {
         "glow-pulse": {
-          "0%, 100%": { boxShadow: "0 0 20px 4px rgba(124, 58, 237, 0.2)" },
-          "50%": { boxShadow: "0 0 40px 8px rgba(124, 58, 237, 0.4)" },
+          "0%, 100%": { boxShadow: "0 0 20px 4px rgba(255, 255, 255, 0.06)" },
+          "50%": { boxShadow: "0 0 40px 8px rgba(255, 255, 255, 0.12)" },
         },
         "fade-in": {
           from: { opacity: "0" },

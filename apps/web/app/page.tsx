@@ -52,15 +52,15 @@ export default function LandingPage() {
 
       {/* ── Background effects ───────────────────────────── */}
       <div className="fixed inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-brand-500/10 rounded-full blur-[120px]" />
-        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-accent-cyan/5 rounded-full blur-[80px]" />
-        <div className="absolute top-1/2 right-1/4 w-[300px] h-[300px] bg-accent-pink/5 rounded-full blur-[80px]" />
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] bg-white/[0.03] rounded-full blur-[120px]" />
+        <div className="absolute top-1/3 left-1/4 w-[400px] h-[400px] bg-white/[0.02] rounded-full blur-[80px]" />
+        <div className="absolute bottom-1/4 right-1/4 w-[300px] h-[300px] bg-white/[0.02] rounded-full blur-[80px]" />
       </div>
 
       {/* ── Hero ─────────────────────────────────────────── */}
       <section className="relative pt-36 pb-24 px-4 text-center animate-fade-in">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-brand-500/30 text-brand-300 text-sm font-medium mb-8">
-          <span className="w-2 h-2 bg-accent-green rounded-full animate-pulse" />
+        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full glass border border-white/15 text-white/60 text-sm font-medium mb-8">
+          <span className="w-2 h-2 bg-white/70 rounded-full animate-pulse" />
           Powered by EfficientNet + ONNX Runtime
         </div>
 
@@ -80,14 +80,14 @@ export default function LandingPage() {
           <Link
             href="/dashboard"
             id="cta-try-demo"
-            className="px-8 py-4 bg-brand-500 hover:bg-brand-400 text-white font-semibold rounded-2xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(124,58,237,0.5)] hover:scale-105 active:scale-100 text-lg"
+            className="px-8 py-4 bg-white hover:bg-white/90 text-black font-semibold rounded-2xl transition-all duration-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] hover:scale-105 active:scale-100 text-lg"
           >
             Try it free →
           </Link>
           <Link
             href="/batch"
             id="cta-batch"
-            className="px-8 py-4 glass hover:glass-strong text-slate-200 font-semibold rounded-2xl transition-all duration-200 hover:scale-105 text-lg"
+            className="px-8 py-4 glass border border-white/15 hover:glass-strong text-white/80 font-semibold rounded-2xl transition-all duration-200 hover:scale-105 text-lg"
           >
             Batch upload
           </Link>

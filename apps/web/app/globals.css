@@ -20,14 +20,14 @@
   }
 
   body {
-    background-color: #03020a;
-    color: #e2e8f0;
+    background-color: #000000;
+    color: #e5e5e5;
     font-family: var(--font-inter);
     min-height: 100vh;
   }
 
   ::selection {
-    background: rgba(124, 58, 237, 0.4);
+    background: rgba(255, 255, 255, 0.2);
     color: #fff;
   }
 
@@ -36,57 +36,57 @@
     height: 6px;
   }
   ::-webkit-scrollbar-track {
-    background: #06050f;
+    background: #080808;
   }
   ::-webkit-scrollbar-thumb {
-    background: #7c3aed66;
+    background: rgba(255, 255, 255, 0.15);
     border-radius: 99px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #7c3aed;
+    background: rgba(255, 255, 255, 0.35);
   }
 }
 
 @layer components {
   /* Glass card */
   .glass {
-    background: rgba(255, 255, 255, 0.04);
+    background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.08);
   }
 
   .glass-strong {
-    background: rgba(255, 255, 255, 0.07);
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(24px);
     -webkit-backdrop-filter: blur(24px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.14);
   }
 
-  /* Gradient text */
+  /* Gradient text — white to silver */
   .text-gradient {
-    background: linear-gradient(135deg, #a574ff 0%, #22d3ee 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #888888 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
   .text-gradient-warm {
-    background: linear-gradient(135deg, #f472b6 0%, #fbbf24 100%);
+    background: linear-gradient(135deg, #ffffff 0%, #a3a3a3 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Glow border */
+  /* Glow border — white */
   .glow-border {
-    box-shadow: 0 0 0 1px rgba(124, 58, 237, 0.4),
-                0 0 20px rgba(124, 58, 237, 0.15);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 0 24px rgba(255, 255, 255, 0.06);
   }
 
   .glow-border-cyan {
-    box-shadow: 0 0 0 1px rgba(34, 211, 238, 0.3),
-                0 0 20px rgba(34, 211, 238, 0.1);
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.08),
+                0 0 20px rgba(255, 255, 255, 0.04);
   }
 
   /* Shimmer loading effect */
