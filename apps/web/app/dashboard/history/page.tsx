@@ -49,7 +49,7 @@ export default function HistoryPage() {
 
         {data && data.items.length === 0 && (
           <div className="glass rounded-3xl p-12 text-center">
-            <div className="text-5xl mb-4">📭</div>
+            <div className="w-12 h-12 mb-4 mx-auto border border-white/10 rounded-xl flex items-center justify-center"><span className="text-xs font-mono text-white/20">HIST</span></div>
             <p className="text-slate-400">No predictions yet. Go classify some images!</p>
           </div>
         )}

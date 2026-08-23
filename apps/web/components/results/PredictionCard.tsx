@@ -41,10 +41,14 @@ export function PredictionCard({ result }: PredictionCardProps) {
         {/* Top prediction */}
         <div className="flex items-start justify-between gap-3">
           <div>
+            <span className="text-xs font-mono font-bold text-green-400">DONE</span>
             <p className="text-slate-400 text-xs uppercase tracking-widest mb-1">
               Top prediction
             </p>
             <h2 className="text-white font-bold text-xl capitalize">{top.label}</h2>
+          </div>
+          <div className="w-10 h-10 mb-3 mx-auto border border-white/10 rounded-xl flex items-center justify-center">
+            <span className="text-[10px] font-mono text-white/30">IMG</span>
           </div>
           <div className="text-right">
             <Badge variant={pct >= 80 ? "success" : pct >= 50 ? "warning" : "default"}>
@@ -67,7 +71,7 @@ export function PredictionCard({ result }: PredictionCardProps) {
               size="sm"
               onClick={() => setShowHeatmap((v) => !v)}
             >
-              {showHeatmap ? "🔥 Hide Grad-CAM" : "🔥 Show Grad-CAM"}
+              {showHeatmap ? "Hide Grad-CAM" : "Show Grad-CAM"}
             </Button>
             {showHeatmap && (
               <p className="text-slate-400 text-xs">

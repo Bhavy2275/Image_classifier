@@ -54,7 +54,7 @@ export default function AuthPage() {
         <div className="text-center mb-8">
           <div className="inline-flex items-center gap-2 mb-4">
             <div className="w-10 h-10 bg-brand-500 rounded-xl flex items-center justify-center text-xl">
-              👁️
+              ●●●
             </div>
             <span className="text-2xl font-bold text-white">VisionAI</span>
           </div>
@@ -64,7 +64,7 @@ export default function AuthPage() {
         <div className="glass-strong rounded-3xl p-8">
           {sent ? (
             <div className="text-center py-4">
-              <div className="text-5xl mb-4">📬</div>
+              <div className="w-12 h-12 mb-4 mx-auto border border-white/10 rounded-xl flex items-center justify-center"><span className="text-xs font-mono text-white/20">AUTH</span></div>
               <h2 className="text-white font-semibold text-xl mb-2">Check your email</h2>
               <p className="text-slate-400 text-sm">
                 We sent a magic link to <strong className="text-white">{email}</strong>.

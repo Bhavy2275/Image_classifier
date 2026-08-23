@@ -96,7 +96,9 @@ export function BatchUploadGrid() {
           )}
         >
           <input {...getInputProps()} id="batch-dropzone-input" />
-          <div className="text-4xl mb-3">📁</div>
+          <div className="w-10 h-10 mb-3 mx-auto border border-white/10 rounded-xl flex items-center justify-center">
+            <span className="text-[10px] font-mono text-white/30">IMG</span>
+          </div>
           <p className="text-white font-medium mb-1">
             {isDragActive ? "Drop images here!" : "Drag & drop up to 20 images"}
           </p>
@@ -142,9 +144,9 @@ export function BatchUploadGrid() {
                       {item.status === "processing" || item.status === "pending" ? (
                         <Spinner size="md" />
                       ) : item.status === "completed" ? (
-                        <span className="text-2xl">✅</span>
+                        <span className="text-xs font-mono font-bold text-green-400">DONE</span>
                       ) : item.status === "failed" ? (
-                        <span className="text-2xl">❌</span>
+                        <span className="text-xs font-mono font-bold text-red-400">FAIL</span>
                       ) : null}
                     </div>
                   )}
@@ -198,7 +200,7 @@ export function BatchUploadGrid() {
 
       {submitError && (
         <div className="glass rounded-2xl p-4 border border-red-500/30 text-red-400 text-sm">
-          ❌ {submitError}
+          <span className="mr-1 font-bold">×</span> {submitError}
         </div>
       )}
 

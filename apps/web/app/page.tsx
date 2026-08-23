@@ -8,37 +8,37 @@ export const metadata: Metadata = {
 
 const features = [
   {
-    icon: "🧠",
+    icon: "AI",
     title: "EfficientNet Backbone",
     description:
       "Powered by EfficientNet-B0 exported to ONNX Runtime for blazing-fast CPU/GPU inference across 1,000 ImageNet classes.",
   },
   {
-    icon: "🔥",
+    icon: "CV",
     title: "Grad-CAM Explainability",
     description:
       "See exactly what the model 'sees'. Gradient-weighted class activation maps highlight the regions that drove each prediction.",
   },
   {
-    icon: "📦",
+    icon: "BT",
     title: "Batch Processing",
     description:
       "Upload up to 20 images at once. Jobs are queued via Redis/RQ so your request never blocks — just poll for results.",
   },
   {
-    icon: "📊",
+    icon: "CH",
     title: "Confidence Charts",
     description:
       "Interactive Recharts visualizations show the top-5 predicted classes with confidence scores side-by-side.",
   },
   {
-    icon: "🎯",
+    icon: "RT",
     title: "Real-Time Analysis",
     description:
       "Instant feedback with interactive probability breakdowns and on-the-fly heatmap generation for any uploaded image.",
   },
   {
-    icon: "⚡",
+    icon: "PR",
     title: "Production Ready",
     description:
       "FastAPI + Gunicorn backend. Docker Compose for local dev. Deploys to Railway + Vercel in minutes.",
@@ -98,18 +98,20 @@ export default function LandingPage() {
       <section className="relative px-4 pb-24 max-w-5xl mx-auto animate-slide-up">
         <div className="glass rounded-3xl p-6 glow-border">
           <div className="bg-void-800 rounded-2xl aspect-[16/7] flex items-center justify-center overflow-hidden">
-            <div className="text-center text-slate-500">
-              <div className="text-6xl mb-4">🖼️</div>
-              <p className="text-sm">Drag & drop any image to classify</p>
+            <div className="text-center text-white/20">
+              <div className="w-16 h-16 mb-4 mx-auto border border-white/10 rounded-2xl flex items-center justify-center">
+                <span className="text-xs font-mono text-white/30">IMG</span>
+              </div>
+              <p className="text-sm">Drag &amp; drop any image to classify</p>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-5 gap-3">
-            {["🐕", "🚗", "🌸", "🦅", "🎸"].map((emoji, i) => (
+            {["Dog", "Car", "Flora", "Bird", "Music"].map((label, i) => (
               <div
                 key={i}
-                className="bg-void-800 rounded-xl aspect-square flex items-center justify-center text-2xl hover:scale-105 transition-transform cursor-pointer"
+                className="bg-void-800 rounded-xl aspect-square flex items-center justify-center text-[10px] font-mono text-white/30 hover:scale-105 transition-transform cursor-pointer tracking-wider"
               >
-                {emoji}
+                {label}
               </div>
             ))}
           </div>
@@ -131,7 +133,7 @@ export default function LandingPage() {
               key={i}
               className="glass rounded-2xl p-6 hover:glass-strong transition-all duration-300 hover:scale-[1.02] hover:glow-border group"
             >
-              <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-200">
+              <div className="text-3xl font-mono font-bold text-white/20 mb-4 group-hover:text-white/40 transition-colors duration-200">
                 {feat.icon}
               </div>
               <h3 className="text-white font-semibold text-lg mb-2">{feat.title}</h3>
