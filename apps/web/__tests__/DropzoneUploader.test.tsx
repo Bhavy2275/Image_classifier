@@ -5,7 +5,7 @@ import { DropzoneUploader } from "@/components/upload/DropzoneUploader";
 
 // Mock react-dropzone to give us control in tests
 jest.mock("react-dropzone", () => ({
-  useDropzone: ({ onDrop }: { onDrop: (files: File[]) => void }) => ({
+  useDropzone: ({ onDrop }: { onDrop: (files: File[], rejected: unknown[]) => void }) => ({
     getRootProps: () => ({
       onClick: jest.fn(),
       onDragEnter: jest.fn(),
