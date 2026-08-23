@@ -1,6 +1,6 @@
 # VisionAI — Explainable Image Classification SaaS
 
-[![Live Demo](https://img.shields.io/badge/Live_Demo-VisionAI-7c3aed?style=for-the-badge&logo=vercel)]([https://visionai.vercel.app](https://visiona1.vercel.app/)) *(Replace with your live deployment URL)*
+[![Live Demo](https://img.shields.io/badge/Live_Demo-VisionAI-7c3aed?style=for-the-badge&logo=vercel)]([https://visiona1.vercel.app](https://visiona1.vercel.app/)) *(Replace with your live deployment URL)*
 
 VisionAI is an AI-powered image classification platform that provides instant predictions across 1,000 categories alongside Grad-CAM heatmaps to explain exactly what visual features influenced the model's decisions.
 
