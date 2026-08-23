@@ -22,20 +22,26 @@ settings = get_settings()
 
 @asynccontextmanager
 async def lifespan(app: FastAPI) -> AsyncIterator[None]:
-    """Warm up ML models on startup so first request is fast."""
-    logger.info("🔥 Warming up OpenCLIP zero-shot classifier …")
-    try:
-        from app.ml.clip_classifier import _load_clip, _get_text_features
-        _load_clip()
-        _get_text_features()   # pre-encode candidate text prompts
-        logger.info("✅ CLIP ready.")
-    except Exception as exc:
-        logger.warning(f"CLIP warmup failed ({exc}), will use EfficientNetV2-S fallback.")
-        get_model_session()
-        get_torch_model()
-    logger.info("🔥 Warming up EfficientNetV2-S for Grad-CAM …")
-    get_torch_model()    # always load for Grad-CAM heatmaps
-    logger.info("✅ All models ready.")
+    """Warm up ML models in background so server starts and serves /health immediately."""
+    import asyncio
+
+    async def _warmup() -> None:
+        logger.info("🔥 Starting background warmup for ML models...")
+        try:
+            from app.ml.clip_classifier import _load_clip, _get_text_features
+            _load_clip()
+            _get_text_features()
+            logger.info("✅ OpenCLIP classifier ready.")
+        except Exception as exc:
+            logger.warning(f"CLIP warmup error ({exc}), will use fallback.")
+        try:
+            get_torch_model()
+            logger.info("✅ Grad-CAM PyTorch model ready.")
+        except Exception as exc:
+            logger.warning(f"PyTorch model warmup error ({exc})")
+
+    # Start background task without blocking the HTTP server startup
+    asyncio.create_task(_warmup())
     yield
     logger.info("👋 Shutting down VisionAI API.")
 
@@ -49,11 +55,11 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-# ── CORS ────────────────────────────────────────────────────
+# ── CORS (Allow all origins for seamless Vercel/localhost integration) ─────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=settings.get_cors_origins(),
-    allow_origin_regex=r"https://.*\.vercel\.app|http://localhost:\d+",
+    allow_origins=["*"],
+    allow_origin_regex=r".*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
