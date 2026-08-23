@@ -1,5 +1,5 @@
 """
-FastAPI application entrypoint.
+FastAPI application entrypoint v0.2.0 - Fast OpenCLIP Zero-Shot + Grad-CAM.
 """
 from __future__ import annotations
 
