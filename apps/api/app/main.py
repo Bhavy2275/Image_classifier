@@ -73,3 +73,12 @@ async def health_check() -> dict:
         "service": settings.app_name,
         "version": settings.app_version,
     }
+
+
+if __name__ == "__main__":
+    import os
+    import uvicorn
+
+    port = int(os.environ.get("PORT", os.environ.get("API_PORT", 8000)))
+    uvicorn.run("app.main:app", host="0.0.0.0", port=port)
+
