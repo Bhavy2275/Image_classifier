@@ -77,7 +77,7 @@ _TEMPLATES = [
 
 def _get_text_features() -> Tuple[torch.Tensor, List[str]]:
     """
-    Load or compute normalized text embeddings with prompt ensembling for all candidate labels.
+    Load or compute normalized text embeddings for all candidate labels.
     Uses disk caching to guarantee instant (<5ms) retrieval on subsequent runs.
     """
     all_labels = _build_all_labels()
@@ -91,21 +91,22 @@ def _get_text_features() -> Tuple[torch.Tensor, List[str]]:
             logger.warning(f"Failed to load cached embeddings ({exc}), recomputing...")
 
     model, _, tokenizer = _load_clip()
-    logger.info(f"Encoding {len(all_labels)} text prompts with ensembling ({len(_TEMPLATES)} templates)...")
+    logger.info(f"Fast encoding {len(all_labels)} text prompts for zero-shot classification...")
 
-    # Encode with multi-template ensembling
+    # Fast vectorized batch encoding
+    prompts = [f"a photo of a {label}" for label in all_labels]
+    batch_size = 256
+    all_embeddings = []
+
     with torch.no_grad():
-        class_embeddings = []
-        for label in all_labels:
-            texts = [template.format(label) for template in _TEMPLATES]
-            tokens = tokenizer(texts)
-            embeddings = model.encode_text(tokens)
-            embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
-            mean_embedding = embeddings.mean(dim=0)
-            mean_embedding = mean_embedding / mean_embedding.norm()
-            class_embeddings.append(mean_embedding)
+        for i in range(0, len(prompts), batch_size):
+            batch = prompts[i : i + batch_size]
+            tokens = tokenizer(batch)
+            emb = model.encode_text(tokens)
+            emb = emb / emb.norm(dim=-1, keepdim=True)
+            all_embeddings.append(emb)
 
-        text_features = torch.stack(class_embeddings, dim=0)
+        text_features = torch.cat(all_embeddings, dim=0)
 
     try:
         torch.save({"features": text_features, "labels": all_labels}, str(_CACHE_PATH))
