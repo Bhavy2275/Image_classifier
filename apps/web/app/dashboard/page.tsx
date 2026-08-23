@@ -7,7 +7,7 @@ import { PredictionCard } from "@/components/results/PredictionCard";
 import { useUploadImage } from "@/hooks/useUploadImage";
 import type { PredictionResult } from "@/lib/types";
 import { Spinner } from "@/components/ui/Spinner";
-import { Crosshair, Package, Clock, AlertCircle } from "lucide-react";
+import { Crosshair, Package, AlertCircle } from "lucide-react";
 
 export default function DashboardPage() {
   const [result, setResult] = useState<PredictionResult | null>(null);
@@ -82,27 +82,14 @@ export default function DashboardPage() {
         </div>
 
         {/* Quick links */}
-        <div className="mt-12 grid sm:grid-cols-2 gap-4 animate-fade-in">
-          <a href="/batch" className="glass rounded-2xl p-5 hover:glass-strong transition-all duration-200 hover:glow-border group">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/8 transition-colors">
-                <Package className="w-4 h-4 text-white/40" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p className="text-white font-medium">Batch Upload</p>
-                <p className="text-slate-400 text-sm">Process up to 20 images at once</p>
-              </div>
+        <div className="mt-12 animate-fade-in">
+          <a href="/batch" className="glass rounded-2xl p-5 hover:glass-strong transition-all duration-200 hover:glow-border group flex items-center gap-4 max-w-md">
+            <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/8 transition-colors">
+              <Package className="w-5 h-5 text-white/40" strokeWidth={1.5} />
             </div>
-          </a>
-          <a href="/dashboard/history" className="glass rounded-2xl p-5 hover:glass-strong transition-all duration-200 hover:glow-border group">
-            <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/8 transition-colors">
-                <Clock className="w-4 h-4 text-white/40" strokeWidth={1.5} />
-              </div>
-              <div>
-                <p className="text-white font-medium">History</p>
-                <p className="text-slate-400 text-sm">View your past predictions</p>
-              </div>
+            <div>
+              <p className="text-white font-medium">Batch Upload</p>
+              <p className="text-slate-400 text-sm">Process up to 20 images at once</p>
             </div>
           </a>
         </div>
