@@ -1,48 +1,71 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/ui/Navbar";
+import {
+  Brain,
+  Eye,
+  Layers,
+  BarChart2,
+  Zap,
+  Server,
+  Image as ImageIcon,
+  Scan,
+  Car,
+  Leaf,
+  Feather,
+  Music,
+  type LucideIcon,
+} from "lucide-react";
 
 export const metadata: Metadata = {
   title: "VisionAI — Explainable Image Classification",
 };
 
-const features = [
+const features: { Icon: LucideIcon; title: string; description: string }[] = [
   {
-    icon: "AI",
+    Icon: Brain,
     title: "EfficientNet Backbone",
     description:
       "Powered by EfficientNet-B0 exported to ONNX Runtime for blazing-fast CPU/GPU inference across 1,000 ImageNet classes.",
   },
   {
-    icon: "CV",
+    Icon: Eye,
     title: "Grad-CAM Explainability",
     description:
       "See exactly what the model 'sees'. Gradient-weighted class activation maps highlight the regions that drove each prediction.",
   },
   {
-    icon: "BT",
+    Icon: Layers,
     title: "Batch Processing",
     description:
       "Upload up to 20 images at once. Jobs are queued via Redis/RQ so your request never blocks — just poll for results.",
   },
   {
-    icon: "CH",
+    Icon: BarChart2,
     title: "Confidence Charts",
     description:
       "Interactive Recharts visualizations show the top-5 predicted classes with confidence scores side-by-side.",
   },
   {
-    icon: "RT",
+    Icon: Zap,
     title: "Real-Time Analysis",
     description:
       "Instant feedback with interactive probability breakdowns and on-the-fly heatmap generation for any uploaded image.",
   },
   {
-    icon: "PR",
+    Icon: Server,
     title: "Production Ready",
     description:
       "FastAPI + Gunicorn backend. Docker Compose for local dev. Deploys to Railway + Vercel in minutes.",
   },
+];
+
+const demoCategories: { Icon: LucideIcon; label: string }[] = [
+  { Icon: Scan,    label: "Animal" },
+  { Icon: Car,     label: "Vehicle" },
+  { Icon: Leaf,    label: "Plant" },
+  { Icon: Feather, label: "Bird" },
+  { Icon: Music,   label: "Object" },
 ];
 
 export default function LandingPage() {
@@ -98,20 +121,19 @@ export default function LandingPage() {
       <section className="relative px-4 pb-24 max-w-5xl mx-auto animate-slide-up">
         <div className="glass rounded-3xl p-6 glow-border">
           <div className="bg-void-800 rounded-2xl aspect-[16/7] flex items-center justify-center overflow-hidden">
-            <div className="text-center text-white/20">
-              <div className="w-16 h-16 mb-4 mx-auto border border-white/10 rounded-2xl flex items-center justify-center">
-                <span className="text-xs font-mono text-white/30">IMG</span>
-              </div>
+            <div className="text-center text-white/20 flex flex-col items-center">
+              <ImageIcon className="w-12 h-12 mb-3 text-white/15" strokeWidth={1} />
               <p className="text-sm">Drag &amp; drop any image to classify</p>
             </div>
           </div>
           <div className="mt-4 grid grid-cols-5 gap-3">
-            {["Dog", "Car", "Flora", "Bird", "Music"].map((label, i) => (
+            {demoCategories.map(({ Icon, label }, i) => (
               <div
                 key={i}
-                className="bg-void-800 rounded-xl aspect-square flex items-center justify-center text-[10px] font-mono text-white/30 hover:scale-105 transition-transform cursor-pointer tracking-wider"
+                className="bg-void-800 rounded-xl aspect-square flex flex-col items-center justify-center gap-1.5 hover:scale-105 transition-transform cursor-pointer group"
               >
-                {label}
+                <Icon className="w-5 h-5 text-white/25 group-hover:text-white/50 transition-colors" strokeWidth={1.5} />
+                <span className="text-[9px] font-medium text-white/20 group-hover:text-white/40 transition-colors tracking-wide">{label}</span>
               </div>
             ))}
           </div>
@@ -128,24 +150,41 @@ export default function LandingPage() {
         </p>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {features.map((feat, i) => (
+          {features.map(({ Icon, title, description }, i) => (
             <div
               key={i}
               className="glass rounded-2xl p-6 hover:glass-strong transition-all duration-300 hover:scale-[1.02] hover:glow-border group"
             >
-              <div className="text-3xl font-mono font-bold text-white/20 mb-4 group-hover:text-white/40 transition-colors duration-200">
-                {feat.icon}
+              <div className="w-10 h-10 rounded-xl border border-white/10 bg-white/5 flex items-center justify-center mb-4 group-hover:border-white/20 group-hover:bg-white/8 transition-all duration-200">
+                <Icon className="w-5 h-5 text-white/50 group-hover:text-white/80 transition-colors" strokeWidth={1.5} />
               </div>
-              <h3 className="text-white font-semibold text-lg mb-2">{feat.title}</h3>
-              <p className="text-slate-400 text-sm leading-relaxed">{feat.description}</p>
+              <h3 className="text-white font-semibold text-lg mb-2">{title}</h3>
+              <p className="text-slate-400 text-sm leading-relaxed">{description}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* ── Footer ───────────────────────────────────────── */}
-      <footer className="border-t border-white/5 py-8 text-center text-slate-500 text-sm">
-        <p>VisionAI — Built with FastAPI, Next.js 15, and PyTorch</p>
+      <footer className="border-t border-white/5 py-10 px-4">
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-white/30">
+          <div className="flex items-center gap-2">
+            <span className="font-semibold text-white/50">VisionAI</span>
+            <span>—</span>
+            <span>Built with FastAPI, Next.js &amp; PyTorch</span>
+          </div>
+          <div className="flex items-center gap-4">
+            <span>© {new Date().getFullYear()} Bhavya</span>
+            <a
+              href="https://github.com/Bhavy2275/Image_classifier"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white/60 transition-colors underline underline-offset-2"
+            >
+              GitHub
+            </a>
+          </div>
+        </div>
       </footer>
     </div>
   );

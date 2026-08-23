@@ -10,6 +10,7 @@ import { Spinner } from "@/components/ui/Spinner";
 import { useBatchJob } from "@/hooks/useBatchJob";
 import { submitBatchJob } from "@/lib/api-client";
 import type { BatchJobItem, BatchJobStatus } from "@/lib/types";
+import { Upload, CheckCircle, XCircle, AlertCircle } from "lucide-react";
 
 interface LocalFile {
   file: File;
@@ -96,9 +97,7 @@ export function BatchUploadGrid() {
           )}
         >
           <input {...getInputProps()} id="batch-dropzone-input" />
-          <div className="w-10 h-10 mb-3 mx-auto border border-white/10 rounded-xl flex items-center justify-center">
-            <span className="text-[10px] font-mono text-white/30">IMG</span>
-          </div>
+          <Upload className="w-8 h-8 mb-3 text-white/20" strokeWidth={1.5} />
           <p className="text-white font-medium mb-1">
             {isDragActive ? "Drop images here!" : "Drag & drop up to 20 images"}
           </p>
@@ -144,9 +143,9 @@ export function BatchUploadGrid() {
                       {item.status === "processing" || item.status === "pending" ? (
                         <Spinner size="md" />
                       ) : item.status === "completed" ? (
-                        <span className="text-xs font-mono font-bold text-green-400">DONE</span>
+                        <CheckCircle className="w-6 h-6 text-green-400" strokeWidth={1.5} />
                       ) : item.status === "failed" ? (
-                        <span className="text-xs font-mono font-bold text-red-400">FAIL</span>
+                        <XCircle className="w-6 h-6 text-red-400" strokeWidth={1.5} />
                       ) : null}
                     </div>
                   )}
@@ -200,7 +199,7 @@ export function BatchUploadGrid() {
 
       {submitError && (
         <div className="glass rounded-2xl p-4 border border-red-500/30 text-red-400 text-sm">
-          <span className="mr-1 font-bold">×</span> {submitError}
+          <AlertCircle className="w-4 h-4 mr-1.5 inline-block" /> {submitError}
         </div>
       )}
 

@@ -1,13 +1,13 @@
 "use client";
 
 import { useState } from "react";
-import type { Metadata } from "next";
 import { Navbar } from "@/components/ui/Navbar";
 import { DropzoneUploader } from "@/components/upload/DropzoneUploader";
 import { PredictionCard } from "@/components/results/PredictionCard";
 import { useUploadImage } from "@/hooks/useUploadImage";
 import type { PredictionResult } from "@/lib/types";
 import { Spinner } from "@/components/ui/Spinner";
+import { Crosshair, Package, Clock, AlertCircle } from "lucide-react";
 
 export default function DashboardPage() {
   const [result, setResult] = useState<PredictionResult | null>(null);
@@ -49,7 +49,7 @@ export default function DashboardPage() {
 
             {error && (
               <div className="glass rounded-2xl p-4 border border-red-500/30 text-red-400 text-sm">
-                <span className="mr-1 font-bold">×</span> {error.message}
+                <AlertCircle className="w-4 h-4 mr-1.5 inline-block" /> {error.message}
               </div>
             )}
 
@@ -72,9 +72,7 @@ export default function DashboardPage() {
               </div>
             ) : (
               <div className="glass rounded-3xl p-8 h-full flex flex-col items-center justify-center text-center min-h-[320px]">
-                <div className="w-12 h-12 mb-4 mx-auto border border-white/10 rounded-xl flex items-center justify-center">
-                  <span className="text-xs font-mono text-white/20">RESULT</span>
-                </div>
+                <Crosshair className="w-10 h-10 mb-3 text-white/15" strokeWidth={1} />
                 <p className="text-slate-500 text-sm">
                   Your prediction results will appear here after upload.
                 </p>
@@ -87,7 +85,9 @@ export default function DashboardPage() {
         <div className="mt-12 grid sm:grid-cols-2 gap-4 animate-fade-in">
           <a href="/batch" className="glass rounded-2xl p-5 hover:glass-strong transition-all duration-200 hover:glow-border group">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-mono text-white/40 group-hover:bg-white/8 transition-colors">BT</span>
+              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/8 transition-colors">
+                <Package className="w-4 h-4 text-white/40" strokeWidth={1.5} />
+              </div>
               <div>
                 <p className="text-white font-medium">Batch Upload</p>
                 <p className="text-slate-400 text-sm">Process up to 20 images at once</p>
@@ -96,7 +96,9 @@ export default function DashboardPage() {
           </a>
           <a href="/dashboard/history" className="glass rounded-2xl p-5 hover:glass-strong transition-all duration-200 hover:glow-border group">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-[10px] font-mono text-white/40 group-hover:bg-white/8 transition-colors">HX</span>
+              <div className="w-8 h-8 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/8 transition-colors">
+                <Clock className="w-4 h-4 text-white/40" strokeWidth={1.5} />
+              </div>
               <div>
                 <p className="text-white font-medium">History</p>
                 <p className="text-slate-400 text-sm">View your past predictions</p>

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ConfidenceChart } from "./ConfidenceChart";
 import { HeatmapOverlay } from "./HeatmapOverlay";
+import { Eye, EyeOff } from "lucide-react";
 
 interface PredictionCardProps {
   result: PredictionResult;
@@ -71,7 +72,11 @@ export function PredictionCard({ result }: PredictionCardProps) {
               size="sm"
               onClick={() => setShowHeatmap((v) => !v)}
             >
-              {showHeatmap ? "Hide Grad-CAM" : "Show Grad-CAM"}
+              {showHeatmap ? (
+                <><EyeOff className="w-3.5 h-3.5 mr-1.5" /> Hide Grad-CAM</>
+              ) : (
+                <><Eye className="w-3.5 h-3.5 mr-1.5" /> Show Grad-CAM</>
+              )}
             </Button>
             {showHeatmap && (
               <p className="text-slate-400 text-xs">
