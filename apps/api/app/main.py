@@ -25,9 +25,9 @@ async def lifespan(app: FastAPI) -> AsyncIterator[None]:
     """Warm up ML models on startup so first request is fast."""
     logger.info("🔥 Warming up OpenCLIP zero-shot classifier …")
     try:
-        from app.ml.clip_classifier import _load_clip, _get_imagenet_text_features
+        from app.ml.clip_classifier import _load_clip, _get_text_features
         _load_clip()
-        _get_imagenet_text_features()   # pre-encode all 1000 text prompts
+        _get_text_features()   # pre-encode candidate text prompts
         logger.info("✅ CLIP ready.")
     except Exception as exc:
         logger.warning(f"CLIP warmup failed ({exc}), will use EfficientNetV2-S fallback.")

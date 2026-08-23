@@ -15,6 +15,7 @@ torchvision
 timm
 onnxruntime
 grad-cam
+open-clip-torch
 
 # ── Image Processing ─────────────────────────────────────────
 Pillow

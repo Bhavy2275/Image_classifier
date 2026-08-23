@@ -48,8 +48,8 @@ def generate_gradcam(
     # Prepare input tensor with official transforms
     input_tensor = preprocess_image_tensor(image_bytes)  # (1, 3, H, W)
 
-    # Determine target class
-    if target_class_idx is None:
+    # Determine target class for EfficientNetV2 (0..999)
+    if target_class_idx is None or target_class_idx < 0 or target_class_idx >= 1000:
         with torch.no_grad():
             logits = model(input_tensor).cpu().numpy()[0]
         target_class_idx = int(np.argmax(softmax(logits)))

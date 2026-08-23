@@ -13,7 +13,7 @@ from pydantic import BaseModel, Field
 class TopKClass(BaseModel):
     """A single predicted class with its rank and confidence."""
     rank: int = Field(..., ge=1, description="Rank (1 = top prediction)")
-    class_index: int = Field(..., ge=0, lt=1000)
+    class_index: int = Field(..., ge=0)
     label: str
     confidence: float = Field(..., ge=0.0, le=1.0)
 

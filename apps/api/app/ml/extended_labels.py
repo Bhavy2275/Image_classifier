@@ -134,9 +134,20 @@ EXTENDED_LABELS = [
     "egg", "bacon", "sausage", "cheese", "butter", "yogurt", "milk",
     "cereal", "granola", "oatmeal", "pancake", "waffle",
 
-    # Pets (beyond ImageNet)
-    "goldfish", "parrot", "turtle", "hamster", "rabbit",
-    "lizard", "snake", "iguana", "ferret", "chinchilla",
+    # Pets & Wildlife (beyond standard ImageNet)
+    "bat", "fruit bat", "flying bat", "vampire bat",
+    "octopus", "giant octopus", "squid", "cuttlefish", "jellyfish", "starfish", "sea turtle",
+    "horseshoe crab", "hermit crab", "crab", "lobster", "shrimp",
+    "bald eagle", "African fish eagle", "sea eagle", "eagle", "golden eagle", "hawk", "falcon", "owl",
+    "fennec fox", "fennec", "desert fox", "kit fox", "arctic fox", "red fox", "fox",
+    "armadillo", "pangolin", "anteater", "sloth",
+    "ferret", "black-footed ferret", "weasel", "otter", "badger", "meerkat",
+    "clownfish", "anemone fish", "angelfish", "seahorse", "ray", "stingray", "manta ray", "shark",
+    "goldfish", "parrot", "turtle", "tortoise", "hamster", "guinea pig", "rabbit",
+    "lizard", "gecko", "chameleon", "snake", "iguana", "chinchilla", "hedgehog",
+    "koala", "kangaroo", "panda", "red panda", "raccoon", "lemur", "monkey", "chimpanzee",
+    "lion", "tiger", "leopard", "cheetah", "jaguar", "cougar", "wolf", "bear", "polar bear",
+    "elephant", "giraffe", "zebra", "hippopotamus", "rhinoceros", "camel", "deer", "moose",
 ]
 # fmt: on
 

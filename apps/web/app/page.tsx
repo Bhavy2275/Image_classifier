@@ -32,10 +32,10 @@ const features = [
       "Interactive Recharts visualizations show the top-5 predicted classes with confidence scores side-by-side.",
   },
   {
-    icon: "🔐",
-    title: "Auth & History",
+    icon: "🎯",
+    title: "Real-Time Analysis",
     description:
-      "Supabase Auth with magic links and OAuth. Every prediction is saved to your personal history with full top-5 data.",
+      "Instant feedback with interactive probability breakdowns and on-the-fly heatmap generation for any uploaded image.",
   },
   {
     icon: "⚡",
