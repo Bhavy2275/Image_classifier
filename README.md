@@ -8,7 +8,7 @@ VisionAI is an AI-powered image classification platform that provides instant pr
 
 ## 🌐 Live Application
 
-- **Live URL:** [https://visionai.vercel.app](https://visionai.vercel.app)
+- **Live URL:** [https://visionai.vercel.app](https://visiona1.vercel.app)
 
 ---
 
