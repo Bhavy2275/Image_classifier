@@ -63,9 +63,21 @@ def _build_all_labels() -> List[str]:
     return merged
 
 
+_TEMPLATES = [
+    "a photo of a {}.",
+    "a photo of the {}.",
+    "a close-up photo of a {}.",
+    "a rendering of a {}.",
+    "a 3d render of a {}.",
+    "a clean photo of a {}.",
+    "a photo of many {}.",
+    "{}.",
+]
+
+
 def _get_text_features() -> Tuple[torch.Tensor, List[str]]:
     """
-    Load or compute normalized text embeddings for all candidate labels.
+    Load or compute normalized text embeddings with prompt ensembling for all candidate labels.
     Uses disk caching to guarantee instant (<5ms) retrieval on subsequent runs.
     """
     all_labels = _build_all_labels()
@@ -79,14 +91,21 @@ def _get_text_features() -> Tuple[torch.Tensor, List[str]]:
             logger.warning(f"Failed to load cached embeddings ({exc}), recomputing...")
 
     model, _, tokenizer = _load_clip()
-    logger.info(f"Encoding {len(all_labels)} text prompts for zero-shot classification...")
+    logger.info(f"Encoding {len(all_labels)} text prompts with ensembling ({len(_TEMPLATES)} templates)...")
 
-    prompts = [f"a photo of a {label}" for label in all_labels]
-    tokens = tokenizer(prompts)
-
+    # Encode with multi-template ensembling
     with torch.no_grad():
-        text_features = model.encode_text(tokens)
-        text_features = text_features / text_features.norm(dim=-1, keepdim=True)
+        class_embeddings = []
+        for label in all_labels:
+            texts = [template.format(label) for template in _TEMPLATES]
+            tokens = tokenizer(texts)
+            embeddings = model.encode_text(tokens)
+            embeddings = embeddings / embeddings.norm(dim=-1, keepdim=True)
+            mean_embedding = embeddings.mean(dim=0)
+            mean_embedding = mean_embedding / mean_embedding.norm()
+            class_embeddings.append(mean_embedding)
+
+        text_features = torch.stack(class_embeddings, dim=0)
 
     try:
         torch.save({"features": text_features, "labels": all_labels}, str(_CACHE_PATH))

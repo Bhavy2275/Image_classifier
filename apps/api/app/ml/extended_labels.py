@@ -113,18 +113,26 @@ EXTENDED_LABELS = [
     "restaurant", "cafe", "bar", "gym", "hospital", "school",
     "library", "museum", "park", "playground",
 
-    # Everyday objects
-    "bottle", "plastic bottle", "glass bottle", "jar", "tin can",
-    "box", "bag", "plastic bag", "envelope", "package",
-    "clock", "alarm clock", "wall clock", "compass",
-    "flashlight", "candle", "lighter", "matches",
-    "umbrella", "suitcase", "luggage", "lock", "key",
-    "coin", "banknote", "credit card",
-    "newspaper", "magazine", "map",
-    "toy", "doll", "action figure", "board game", "puzzle", "Lego",
-    "balloon", "gift box", "ribbon",
-    "soap", "shampoo", "toothbrush", "toothpaste", "razor",
-    "sunscreen", "perfume", "makeup", "lipstick",
+    # Tabletop games, toys & gambling
+    "dice", "pair of dice", "white dice", "gaming dice", "craps dice", "six-sided dice",
+    "dominoes", "domino tile", "rubik's cube", "puzzle cube", "playing cards", "poker cards",
+    "poker chip", "casino chip", "chess piece", "chessboard", "chess set", "checkers",
+    "mahjong tile", "mahjong set", "dartboard", "darts", "roulette wheel", "slot machine",
+    "billiard ball", "pool ball", "pool table", "8-ball", "foosball table", "air hockey table",
+    "arcade machine", "pinball machine", "board game", "puzzle", "jigsaw puzzle", "Lego bricks",
+    "action figure", "toy car", "doll", "teddy bear", "yo-yo", "fidget spinner", "kite",
+
+    # Everyday objects & containers
+    "bottle", "plastic bottle", "glass bottle", "jar", "tin can", "aluminum can",
+    "cardboard box", "wooden box", "bag", "plastic bag", "paper bag", "envelope", "package",
+    "clock", "alarm clock", "wall clock", "digital clock", "hourglass", "compass",
+    "flashlight", "candle", "candle holder", "lighter", "matchbox", "matches",
+    "umbrella", "suitcase", "luggage", "briefcase", "padlock", "lock", "key", "keychain",
+    "coin", "coins", "banknote", "paper money", "credit card", "passport", "ID card",
+    "newspaper", "magazine", "book", "hardcover book", "map", "globe",
+    "balloon", "gift box", "ribbon", "trophy", "medal", "badge",
+    "soap", "liquid soap", "shampoo", "toothbrush", "electric toothbrush", "toothpaste", "razor",
+    "sunscreen", "perfume bottle", "cologne", "makeup brush", "lipstick", "nail polish",
 
     # Food (more specific)
     "apple", "banana", "orange", "strawberry", "blueberry", "grape",
